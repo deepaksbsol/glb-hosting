@@ -19,16 +19,19 @@
   </head>
   <body>
     <model-viewer 
-      src="78080.glb"
+      src="https://deepaksbsol.github.io/glb-hosting/78080.glb" 
+      alt="3D model"
       camera-controls 
       auto-rotate 
       shadow-intensity="1" 
       exposure="1" 
-      alt="3D model">
+      ar 
+      ar-modes="webxr scene-viewer quick-look"
+      style="width: 100vw; height: 90vh;">
     </model-viewer>
 
     <a href="https://arvr.google.com/scene-viewer/1.0?file=https://deepaksbsol.github.io/glb-hosting/78080.glb&mode=ar_only">
-  <button class="ar-button">View in AR</button>
+      <button class="ar-button">View in AR</button>
     </a>
   </body>
 </html>
