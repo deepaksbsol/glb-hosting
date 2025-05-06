@@ -4,16 +4,34 @@
     <title>3D Model AR Viewer</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-      body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-      model-viewer { width: 100vw; height: 90vh; }
+      body {
+        margin: 0;
+        background: #000;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        font-family: sans-serif;
+      }
+
+      model-viewer {
+        flex: 1;
+        width: 100%;
+      }
+
       .ar-button {
-        margin: 10px;
-        padding: 10px 20px;
+        padding: 15px 25px;
         font-size: 18px;
         background: #00aaff;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
+        margin: 10px auto;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+
+      .ar-button:hover {
+        background: #008ecc;
       }
     </style>
   </head>
