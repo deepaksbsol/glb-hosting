@@ -3,17 +3,39 @@
   <head>
     <title>3D Model AR Viewer</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-      body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-      model-viewer { width: 100vw; height: 90vh; }
+      body { 
+        margin: 0; 
+        background: #000; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center;
+        font-family: Arial, sans-serif;
+      }
+      model-viewer { 
+        width: 100vw; 
+        height: 90vh; 
+      }
       .ar-button {
         margin: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-        background: #00aaff;
+        padding: 12px 24px;
+        font-size: 16px;
+        background: #4285f4;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 24px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+      .ar-button:hover {
+        background: #3367d6;
+      }
+      .error {
+        color: #ff4444;
+        padding: 10px;
+        text-align: center;
       }
     </style>
   </head>
@@ -23,12 +45,31 @@
       camera-controls 
       auto-rotate 
       shadow-intensity="1" 
-      exposure="1" 
-      alt="3D model">
+      exposure="1"
+      ar 
+      ar-modes="scene-viewer quick-look"
+      alt="3D model"
+      ios-src="https://deepaksbsol.github.io/glb-hosting/78080.glb">
+      <button slot="ar-button" class="ar-button">
+        View in AR
+      </button>
+      
+      <div class="error" id="error-message"></div>
     </model-viewer>
 
-    <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://deepaksbsol.github.io/glb-hosting/78080.glb&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://deepaksbsol.github.io/glb-hosting/;end;">
-      <button class="ar-button">View in AR</button>
-    </a>
+    <script>
+      // Check if AR is available
+      document.querySelector('model-viewer').addEventListener('ar-status', (event) => {
+        if (event.detail.status === 'failed') {
+          document.getElementById('error-message').textContent = 
+            'AR is not available on this device or there was an error loading the model.';
+        }
+      });
+      
+      // Alternative AR intent for Android
+      function launchAR() {
+        window.location.href = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent('https://deepaksbsol.github.io/glb-hosting/78080.glb')}&mode=ar_only&title=3D%20Model#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${encodeURIComponent('https://deepaksbsol.github.io/glb-hosting/')};end`;
+      }
+    </script>
   </body>
 </html>
