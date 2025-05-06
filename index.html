@@ -4,34 +4,41 @@
     <title>3D Model AR Viewer</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-      body {
+      html, body {
         margin: 0;
-        background: #000;
+        padding: 0;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        background-color: #000;
         font-family: sans-serif;
       }
 
       model-viewer {
-        flex: 1;
+        flex: 1 1 auto;
         width: 100%;
+        height: 100%;
+      }
+
+      .footer {
+        padding: 10px;
+        background-color: #000;
+        text-align: center;
       }
 
       .ar-button {
         padding: 15px 25px;
         font-size: 18px;
-        background: #00aaff;
-        color: white;
+        background-color: #00aaff;
+        color: #fff;
         border: none;
         border-radius: 8px;
-        margin: 10px auto;
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       }
 
       .ar-button:hover {
-        background: #008ecc;
+        background-color: #008ecc;
       }
     </style>
   </head>
@@ -45,8 +52,10 @@
       alt="3D model">
     </model-viewer>
 
-    <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://deepaksbsol.github.io/glb-hosting/78080.glb&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://deepaksbsol.github.io/glb-hosting/;end;">
-      <button class="ar-button">View in AR</button>
-    </a>
+    <div class="footer">
+      <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://deepaksbsol.github.io/glb-hosting/78080.glb&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://deepaksbsol.github.io/glb-hosting/;end;">
+        <button class="ar-button">View in AR</button>
+      </a>
+    </div>
   </body>
 </html>
